@@ -90,7 +90,7 @@ const Stack = () => {
             >
               {/* Category Icon */}
               <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <span className="material-symbols-outlined text-primary-container text-[20px]">
+                <span className="material-symbols-outlined text-primary-container text-[20px]" aria-hidden="true">
                   {group.icon}
                 </span>
               </div>

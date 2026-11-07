@@ -20,7 +20,7 @@ const Achievements = () => {
               className="glass-card p-10 text-center rounded-3xl group border-t-2 border-primary/20 hover:glow-blue transition-all duration-300"
             >
               <div className="w-16 h-16 mx-auto mb-8 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">
-                <span className="material-symbols-outlined text-4xl">{getIconName(item.title)}</span>
+                <span className="material-symbols-outlined text-4xl" aria-hidden="true">{getIconName(item.title)}</span>
               </div>
               <h3 className="text-lg font-bold leading-tight group-hover:text-primary transition-colors">
                 {item.title}

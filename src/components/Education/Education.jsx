@@ -19,7 +19,7 @@ const Education = () => {
               className="glass-card p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden border-t-2 border-primary/30 group hover:glow-blue transition-all duration-500"
             >
               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                <span className="material-symbols-outlined text-[80px] text-primary">school</span>
+                <span className="material-symbols-outlined text-[80px] text-primary" aria-hidden="true">school</span>
               </div>
               
               <div className="relative z-10 space-y-6">
@@ -35,7 +35,7 @@ const Education = () => {
                 
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 text-on-surface">
-                    <span className="material-symbols-outlined text-primary">account_balance</span>
+                    <span className="material-symbols-outlined text-primary" aria-hidden="true">account_balance</span>
                     <p className="font-semibold">{edu.institution}</p>
                   </div>
                   

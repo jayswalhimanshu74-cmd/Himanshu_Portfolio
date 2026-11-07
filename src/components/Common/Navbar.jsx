@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const navLinks = [
+  { name: 'PROJECTS', href: '#projects', path: 'projects' },
+  { name: 'STACK', href: '#skills', path: 'stack' },
+  { name: 'ENGINEERING', href: '#experience', path: 'engineering' },
+  { name: 'ABOUT', href: '#about', path: 'about' },
+  { name: 'CONTACT', href: '#contact', path: 'contact' },
+];
+
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('projects');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const navLinks = [
-    { name: 'PROJECTS', href: '#projects', path: 'projects' },
-    { name: 'STACK', href: '#skills', path: 'stack' },
-    { name: 'ENGINEERING', href: '#experience', path: 'engineering' },
-    { name: 'ABOUT', href: '#about', path: 'about' },
-    { name: 'CONTACT', href: '#contact', path: 'contact' },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,21 +63,37 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* Action Button / Profile */}
-        <div className="flex items-center gap-5">
+        {/* Action Button / Profile & Resume */}
+        <div className="flex items-center gap-4">
+          <a
+            href="/Himanshu_Jayswal_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 border border-primary/40 text-primary font-label-caps text-[10px] tracking-[0.15em] rounded-sm hover:bg-primary/10 transition-colors uppercase font-bold"
+          >
+            RESUME
+          </a>
+
           <a
             href="#contact"
+            aria-label="Contact"
             className="w-7 h-7 rounded-full bg-primary flex items-center justify-center hover:scale-105 transition-transform"
           >
-            <span className="material-symbols-outlined text-on-primary text-[16px]">person</span>
+            <span className="material-symbols-outlined text-on-primary text-[16px]" aria-hidden="true">person</span>
           </a>
           
           {/* Mobile Menu Toggle */}
           <button 
-            className="md:hidden material-symbols-outlined text-on-surface text-[24px] cursor-pointer"
+            type="button"
+            className="md:hidden text-on-surface cursor-pointer flex items-center justify-center p-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
           >
-            {isMobileMenuOpen ? 'close' : 'menu'}
+            <span className="material-symbols-outlined text-[24px]" aria-hidden="true">
+              {isMobileMenuOpen ? 'close' : 'menu'}
+            </span>
           </button>
         </div>
       </div>
@@ -103,6 +119,16 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            <a
+              href="/Himanshu_Jayswal_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="font-label-caps text-[12px] tracking-[0.2em] text-primary font-bold py-2 border-t border-outline-variant/10 uppercase"
+            >
+              RESUME (PDF)
+            </a>
           </motion.div>
         )}
       </AnimatePresence>

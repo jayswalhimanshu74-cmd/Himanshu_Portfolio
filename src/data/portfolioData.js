@@ -22,9 +22,9 @@ export const portfolioData = {
     ],
     intro: "I am a passionate Assistant Engineer and aspiring Java Developer with experience in building full-stack applications using Java, Spring Boot, React, Android, and modern technologies. I enjoy building real-world projects, solving problems, and creating scalable applications.",
     about: "I am an Assistant Engineer and aspiring Java Full Stack Developer passionate about building modern applications using Java, Spring Boot, React, Android, and cloud technologies. I enjoy turning ideas into practical products and continuously learning new technologies.",
-    location: "Rajkot, Gujarat, India",
-    email: "jayswalhimanshu74@gmail.com", // Placeholder, user should update
-    resumeUrl: "#", // Placeholder
+    location: "Damanager, Amreli, Gujarat ",
+    email: "jayswalhimanshu74@gmail.com",
+    resumeUrl: "/Himanshu_Jayswal_Resume.pdf",
     socials: [
       { name: "GitHub", icon: GitHub, url: "https://github.com/jayswalhimanshu74-cmd" },
       { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/in/himanshu-jayswal-dev" },

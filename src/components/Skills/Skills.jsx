@@ -43,7 +43,7 @@ const Skills = () => {
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${
                     index % 2 === 0 ? 'bg-primary/10' : 'bg-secondary/10'
                   }`}>
-                    <span className={`material-symbols-outlined ${index % 2 === 0 ? 'text-primary' : 'text-secondary'}`}>
+                    <span className={`material-symbols-outlined ${index % 2 === 0 ? 'text-primary' : 'text-secondary'}`} aria-hidden="true">
                       {getIconName(skill.name)}
                     </span>
                   </div>

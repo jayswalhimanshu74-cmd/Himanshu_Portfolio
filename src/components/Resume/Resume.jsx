@@ -21,21 +21,30 @@ const Resume = () => {
           <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-xl rotate-12 group hover:rotate-0 transition-all duration-500">
             <FileText size={40} className="text-white" />
           </div>
-          
+
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Want to see my <br /><span className="text-gradient">Full Credentials?</span></h2>
           <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
             I've put together a comprehensive resume that details my technical skills, academic background, and project experience in depth. Feel free to download it or view it online.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button className="btn-primary flex items-center gap-2 w-full sm:w-auto justify-center px-10">
+            <a
+              href="/Himanshu_Jayswal_Resume.pdf"
+              download
+              className="btn-primary flex items-center gap-2 w-full sm:w-auto justify-center px-10 py-3 rounded-lg font-bold"
+            >
               <Download size={20} />
               Download PDF
-            </button>
-            <button className="btn-secondary flex items-center gap-2 w-full sm:w-auto justify-center px-10">
+            </a>
+            <a
+              href="/Himanshu_Jayswal_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary flex items-center gap-2 w-full sm:w-auto justify-center px-10 py-3 rounded-lg font-bold"
+            >
               <ExternalLink size={20} />
               View Online
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>
