@@ -29,14 +29,14 @@ const Footer = () => {
         {/* Right: Social + Copyright */}
         <div className="flex flex-col items-center md:items-end gap-4">
           <div className="flex gap-4">
-            <a href="https://github.com/jayswalhimanshu74-cmd" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-surface-container border border-surface-variant flex items-center justify-center hover:border-primary-container/40 transition-colors">
-              <span className="material-symbols-outlined text-on-surface-variant text-[16px]">terminal</span>
+            <a href="https://github.com/jayswalhimanshu74-cmd" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="w-8 h-8 rounded-full bg-surface-container border border-surface-variant flex items-center justify-center hover:border-primary-container/40 transition-colors">
+              <span className="material-symbols-outlined text-on-surface-variant text-[16px]" aria-hidden="true">terminal</span>
             </a>
-            <a href="https://linkedin.com/in/himanshujayswal" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-surface-container border border-surface-variant flex items-center justify-center hover:border-primary-container/40 transition-colors">
-              <span className="material-symbols-outlined text-on-surface-variant text-[16px]">public</span>
+            <a href="https://www.linkedin.com/in/himanshu-jayswal-dev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="w-8 h-8 rounded-full bg-surface-container border border-surface-variant flex items-center justify-center hover:border-primary-container/40 transition-colors">
+              <span className="material-symbols-outlined text-on-surface-variant text-[16px]" aria-hidden="true">public</span>
             </a>
-            <a href="mailto:jayswalhimanshu74@gmail.com" className="w-8 h-8 rounded-full bg-surface-container border border-surface-variant flex items-center justify-center hover:border-primary-container/40 transition-colors">
-              <span className="material-symbols-outlined text-on-surface-variant text-[16px]">mail</span>
+            <a href="mailto:jayswalhimanshu74@gmail.com" aria-label="Email Himanshu" className="w-8 h-8 rounded-full bg-surface-container border border-surface-variant flex items-center justify-center hover:border-primary-container/40 transition-colors">
+              <span className="material-symbols-outlined text-on-surface-variant text-[16px]" aria-hidden="true">mail</span>
             </a>
           </div>
           <p className="font-technical text-[10px] text-outline tracking-wider">

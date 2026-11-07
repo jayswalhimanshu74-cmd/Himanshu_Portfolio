@@ -1,7 +1,9 @@
+import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { portfolioData } from '../../data/portfolioData';
-import ShaderBackground from './ShaderBackground';
-import ThreeDObject from './ThreeDObject';
+
+const ShaderBackground = lazy(() => import('./ShaderBackground'));
+const ThreeDObject = lazy(() => import('./ThreeDObject'));
 
 const Hero = () => {
   const { personalInfo } = portfolioData;
@@ -12,7 +14,9 @@ const Hero = () => {
       id="home"
     >
       {/* WebGL Ambient Background Layer */}
-      <ShaderBackground />
+      <Suspense fallback={null}>
+        <ShaderBackground />
+      </Suspense>
 
       {/* Atmospheric Gradients overlay */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-surface-container-lowest/90 via-surface-container-lowest/50 to-transparent pointer-events-none" />
@@ -59,23 +63,37 @@ const Hero = () => {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-5 mt-6">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-5 mt-6">
               <a 
                 href="#projects" 
                 className="group relative px-6 py-3.5 bg-primary-container text-surface-container-lowest font-label-caps text-[11px] tracking-[0.14em] uppercase rounded-sm flex items-center gap-2.5 overflow-hidden transition-transform hover:scale-[1.02] shadow-md font-bold"
               >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                 <span className="relative z-10">Explore Projects</span>
-                <span className="material-symbols-outlined relative z-10 text-[16px] group-hover:translate-x-1 transition-transform">
+                <span className="material-symbols-outlined relative z-10 text-[16px] group-hover:translate-x-1 transition-transform" aria-hidden="true">
                   arrow_forward
                 </span>
               </a>
+
+              <a 
+                href="/Himanshu_Jayswal_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                className="group px-6 py-3.5 border border-primary-container/40 text-primary-container hover:bg-primary-container/10 font-label-caps text-[11px] tracking-[0.14em] uppercase rounded-sm flex items-center gap-2.5 transition-all font-bold"
+              >
+                <span>Resume</span>
+                <span className="material-symbols-outlined text-[16px] opacity-70 group-hover:opacity-100 transition-opacity" aria-hidden="true">
+                  download
+                </span>
+              </a>
+
               <a 
                 href="#contact" 
-                className="group px-6 py-3.5 text-on-surface-variant hover:text-on-surface font-label-caps text-[11px] tracking-[0.14em] uppercase flex items-center gap-2.5 transition-colors font-semibold"
+                className="group px-5 py-3.5 text-on-surface-variant hover:text-on-surface font-label-caps text-[11px] tracking-[0.14em] uppercase flex items-center gap-2.5 transition-colors font-semibold"
               >
                 <span>Get In Touch</span>
-                <span className="material-symbols-outlined text-[16px] opacity-50 group-hover:opacity-100 transition-opacity">
+                <span className="material-symbols-outlined text-[16px] opacity-50 group-hover:opacity-100 transition-opacity" aria-hidden="true">
                   mail
                 </span>
               </a>
@@ -90,7 +108,9 @@ const Hero = () => {
             className="col-span-1 lg:col-span-5 h-[360px] lg:h-[460px] xl:h-[520px] relative hidden lg:block"
           >
             <div className="absolute inset-0 z-10">
-              <ThreeDObject />
+              <Suspense fallback={<div className="w-full h-full flex items-center justify-center opacity-30"><div className="w-24 h-24 rounded-full border border-primary-container/20 animate-spin" /></div>}>
+                <ThreeDObject />
+              </Suspense>
             </div>
             
             {/* Decorator HUD Elements */}

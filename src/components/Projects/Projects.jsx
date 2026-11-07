@@ -91,7 +91,7 @@ const Projects = () => {
                   {/* Floating preview badge */}
                   <div className="absolute top-3.5 right-3.5 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest/85 backdrop-blur-md border border-outline-variant/40 text-on-surface font-label-caps text-[9.5px] tracking-wider uppercase font-medium shadow-md">
                     <span>{project.liveUrl ? 'Live Preview' : 'Source Code'}</span>
-                    <span className="material-symbols-outlined text-[13px] text-primary-container">
+                    <span className="material-symbols-outlined text-[13px] text-primary-container" aria-hidden="true">
                       {project.liveUrl ? 'open_in_new' : 'code'}
                     </span>
                   </div>
@@ -139,7 +139,7 @@ const Projects = () => {
                         className="inline-flex items-center gap-2 px-4.5 py-2.5 bg-primary-container hover:bg-primary text-surface-container-lowest font-label-caps text-[10.5px] tracking-[0.14em] rounded-sm font-bold uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(214,183,122,0.3)] hover:-translate-y-0.5 group/live"
                       >
                         <span>Explore Live</span>
-                        <span className="material-symbols-outlined text-[15px] transform transition-transform group-hover/live:translate-x-0.5 group-hover/live:-translate-y-0.5">
+                        <span className="material-symbols-outlined text-[15px] transform transition-transform group-hover/live:translate-x-0.5 group-hover/live:-translate-y-0.5" aria-hidden="true">
                           open_in_new
                         </span>
                       </a>
@@ -165,7 +165,7 @@ const Projects = () => {
                           }
                         />
                         <span>GitHub</span>
-                        <span className="material-symbols-outlined text-[14px] transform transition-transform group-hover/git:translate-x-0.5">
+                        <span className="material-symbols-outlined text-[14px] transform transition-transform group-hover/git:translate-x-0.5" aria-hidden="true">
                           arrow_forward
                         </span>
                       </a>

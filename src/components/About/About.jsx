@@ -72,7 +72,7 @@ const About = () => {
               />
               <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-surface-container-lowest/90 to-transparent">
                 <span className="font-technical text-[10.5px] text-primary-container tracking-wider">
-                  BHAVNAGER , GUJARAT — 21.0721°N 72.1323°E
+                  Amreli , GUJARAT — 21.0721°N 72.1323°E
                 </span>
               </div>
             </div>
