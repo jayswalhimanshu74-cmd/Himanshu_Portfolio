@@ -90,24 +90,31 @@ const ThreeDObject = () => {
       resizeObserver.observe(container);
     }
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Animation Loop
     let animationFrameId;
-    const animate = () => {
-      core.rotation.y += 0.003;
-      core.rotation.x += 0.0015;
-
-      // Smooth mouse lag
-      targetX += (mouseX * 1.5 - targetX) * 0.05;
-      targetY += (-mouseY * 1.5 - targetY) * 0.05;
-
-      core.position.x = targetX;
-      core.position.y = targetY;
-
+    if (prefersReducedMotion) {
+      // Pause 3D animation for users with prefers-reduced-motion
       renderer.render(scene, camera);
-      animationFrameId = requestAnimationFrame(animate);
-    };
+    } else {
+      const animate = () => {
+        core.rotation.y += 0.003;
+        core.rotation.x += 0.0015;
 
-    animate();
+        // Smooth mouse lag
+        targetX += (mouseX * 1.5 - targetX) * 0.05;
+        targetY += (-mouseY * 1.5 - targetY) * 0.05;
+
+        core.position.x = targetX;
+        core.position.y = targetY;
+
+        renderer.render(scene, camera);
+        animationFrameId = requestAnimationFrame(animate);
+      };
+
+      animate();
+    }
 
     // Clean up
     return () => {

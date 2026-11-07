@@ -10,26 +10,77 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const [activeSection, setActiveSection] = useState('projects');
+  const [activeSection, setActiveSection] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Smooth scroll helper
+  const handleNavClick = (e, href, path) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', href);
+      setActiveSection(path);
+    }
+  };
+
+  // Scroll to hash on initial page load and when hash changes
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPos = window.scrollY + 120;
-      for (const link of navLinks) {
-        const element = document.querySelector(link.href);
-        if (element) {
-          const top = element.offsetTop;
-          const height = element.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(link.path);
+    const scrollToHash = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          const matchedLink = navLinks.find((l) => l.href === hash);
+          if (matchedLink) {
+            setActiveSection(matchedLink.path);
+          } else if (hash === '#home') {
+            setActiveSection('');
           }
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Run after mount so DOM elements are available
+    const timer = setTimeout(scrollToHash, 100);
+    window.addEventListener('hashchange', scrollToHash);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('hashchange', scrollToHash);
+    };
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = ['home', 'projects', 'skills', 'experience', 'about', 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            if (id === 'home') {
+              setActiveSection('');
+            } else if (id === 'skills') {
+              setActiveSection('stack');
+            } else if (id === 'experience') {
+              setActiveSection('engineering');
+            } else {
+              setActiveSection(id);
+            }
+          }
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -37,14 +88,21 @@ const Navbar = () => {
       <div className="h-16 md:h-18 max-w-container-max mx-auto px-gutter flex items-center justify-between">
         
         {/* Logo Section */}
-        <div className="flex items-center gap-3">
+        <a 
+          href="#home" 
+          onClick={(e) => handleNavClick(e, '#home', '')}
+          className="flex items-center gap-3 group"
+        >
           <img 
             alt="Himanshu Jayswal Logo" 
             className="h-7 w-auto object-contain" 
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOXtsNgDNK_eOzbDLQkcJbMNm--PXoa2Y1AfxJlkyg6WY3wdBRFX96T5Bjwn5oVmwNgTveIio_3RRz2rp_XC68Z6h9W8nstTGbtXnerEhhEHtVWWrNP2uAnhuGipqft50zCLU9l_eVc8y2cC1LiPS7Vxv95s8IgB24LiIHEepp4B8nEVDtv_6VDEEVdOdryDfT1zVNjBEHKDqyRyWZRUnUYNKfCpYbqUHfovTLSBNFQ_bmLB1jg0coAQ"
           />
-          <span className="font-headline-md text-xl text-on-surface tracking-tight uppercase font-bold">ENGINEER</span>
-        </div>
+          <span className="font-headline-md text-lg sm:text-xl text-on-surface tracking-tight uppercase font-bold">
+            <span className="hidden sm:inline">Himanshu Jayswal</span>
+            <span className="sm:hidden">H. Jayswal</span>
+          </span>
+        </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-7 lg:gap-10">
@@ -52,7 +110,8 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              className={`font-label-caps text-[11px] tracking-[0.2em] transition-all duration-300 ${
+              onClick={(e) => handleNavClick(e, link.href, link.path)}
+              className={`font-label-caps text-xs tracking-[0.14em] font-semibold transition-all duration-300 ${
                 activeSection === link.path
                   ? 'text-primary font-bold underline underline-offset-8 decoration-2'
                   : 'text-on-surface-variant hover:text-primary'
@@ -70,14 +129,15 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             download
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 border border-primary/40 text-primary font-label-caps text-[10px] tracking-[0.15em] rounded-sm hover:bg-primary/10 transition-colors uppercase font-bold"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 border border-primary/40 text-primary font-label-caps text-xs tracking-[0.14em] rounded-sm hover:bg-primary/10 transition-colors uppercase font-bold"
           >
             RESUME
           </a>
 
           <a
             href="#contact"
-            aria-label="Contact"
+            onClick={(e) => handleNavClick(e, '#contact', 'contact')}
+            aria-label="Contact Himanshu"
             className="w-7 h-7 rounded-full bg-primary flex items-center justify-center hover:scale-105 transition-transform"
           >
             <span className="material-symbols-outlined text-on-primary text-[16px]" aria-hidden="true">person</span>
@@ -111,9 +171,9 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`font-label-caps text-[12px] tracking-[0.2em] transition-colors py-2 ${
-                  activeSection === link.path ? 'text-primary font-bold' : 'text-on-surface-variant'
+                onClick={(e) => handleNavClick(e, link.href, link.path)}
+                className={`font-label-caps text-xs tracking-[0.14em] transition-colors py-2 font-semibold ${
+                  activeSection === link.path ? 'text-primary font-bold underline underline-offset-8' : 'text-on-surface-variant'
                 }`}
               >
                 {link.name}
@@ -125,7 +185,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               download
               onClick={() => setIsMobileMenuOpen(false)}
-              className="font-label-caps text-[12px] tracking-[0.2em] text-primary font-bold py-2 border-t border-outline-variant/10 uppercase"
+              className="font-label-caps text-xs tracking-[0.14em] text-primary font-bold py-2 border-t border-outline-variant/10 uppercase"
             >
               RESUME (PDF)
             </a>

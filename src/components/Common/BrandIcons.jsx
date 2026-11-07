@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Custom Brand Icons to replace missing icons in lucide-react v1.0.0+
  * These are designed to match the Lucide icon style (24x24, stroke-width 2).

@@ -2,61 +2,91 @@ import { motion } from 'framer-motion';
 import { portfolioData } from '../../data/portfolioData';
 
 const Education = () => {
+  const { education } = portfolioData;
+  const edu = education[0] || {
+    degree: "Bachelor of Engineering in Information Technology",
+    institution: "Gujarat Technological University",
+    period: "2023 - 2027",
+    description: "Pursuing B.E. in Information Technology, Gujarat Technological University (expected 2027)"
+  };
+
+  const coreFocusAreas = [
+    "Object-Oriented Programming (Java)",
+    "Data Structures & Algorithms",
+    "Database Management Systems (SQL)",
+    "Web Application Architecture",
+    "Computer Networks & Security",
+    "Operating Systems & Linux Fundamentals"
+  ];
+
   return (
-    <section className="py-section-gap px-gutter bg-surface-dim" id="education">
-      <div className="max-w-container-max mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold">Academic <span className="text-primary">Foundation</span></h2>
+    <section className="relative w-full bg-surface-container-lowest py-section-gap px-gutter scroll-mt-24" id="education">
+      <div className="max-w-container-max mx-auto w-full flex flex-col gap-10">
+
+        {/* Section Header - Single clear label */}
+        <div className="flex flex-col gap-4 max-w-3xl">
+          <div className="flex items-center gap-3">
+            <div className="h-[1px] w-10 bg-primary" />
+            <span className="font-label-caps text-xs tracking-[0.14em] text-primary uppercase font-semibold">
+              ACADEMIC BACKGROUND
+            </span>
+          </div>
+          <h2 className="font-display-lg text-3xl sm:text-4xl lg:text-5xl xl:text-[56px] text-on-surface uppercase tracking-tight font-bold">
+            EDUCATION
+          </h2>
         </div>
-        
-        <div className="max-w-3xl mx-auto">
-          {portfolioData.education.map((edu, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="glass-card p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden border-t-2 border-primary/30 group hover:glow-blue transition-all duration-500"
-            >
-              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                <span className="material-symbols-outlined text-[80px] text-primary" aria-hidden="true">school</span>
-              </div>
-              
-              <div className="relative z-10 space-y-6">
-                <div className="space-y-2">
-                  <span className="text-primary text-xs font-bold bg-primary/10 px-4 py-1 rounded-full border border-primary/20 uppercase tracking-widest">
-                    {edu.period}
-                  </span>
-                  <h3 className="text-2xl md:text-3xl font-bold">{edu.degree}</h3>
-                  <p className="text-secondary text-lg font-medium">{edu.institution}</p>
+
+        {/* 2-Column Balanced Card Layout (Eliminates dead space) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-surface-container border border-surface-variant rounded-xl p-7 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+        >
+          {/* Left Column: Degree & Institutional Status */}
+          <div className="lg:col-span-6 flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <span className="px-3 py-1 bg-primary-container/15 border border-primary-container/30 text-primary-container font-technical text-xs font-semibold rounded-full uppercase tracking-wider">
+                {edu.period}
+              </span>
+              <span className="text-on-surface-variant font-technical text-xs">
+                Expected Graduation: 2027
+              </span>
+            </div>
+
+            <h3 className="font-headline-lg text-xl sm:text-2xl text-on-surface font-bold">
+              {edu.degree}
+            </h3>
+
+            <p className="font-headline-md text-base text-primary-container font-medium">
+              {edu.institution}
+            </p>
+
+            <p className="font-body-md text-sm sm:text-base text-on-surface-variant leading-relaxed max-w-[60ch] mt-1">
+              {edu.description}
+            </p>
+          </div>
+
+          {/* Right Column: Academic Foundations & Relevant Coursework */}
+          <div className="lg:col-span-6 flex flex-col gap-4 lg:border-l lg:border-surface-variant/40 lg:pl-8">
+            <span className="font-label-caps text-xs text-on-surface-variant tracking-[0.14em] uppercase font-semibold">
+              CORE COURSEWORK & FOUNDATIONS
+            </span>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {coreFocusAreas.map((topic, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-2.5 p-3 rounded-lg bg-surface-container-high/40 border border-surface-variant/30 text-xs text-on-surface font-body-md"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-container shrink-0" />
+                  <span>{topic}</span>
                 </div>
-                
-                <div className="h-px w-full bg-gradient-to-r from-primary/30 to-transparent"></div>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-on-surface">
-                    <span className="material-symbols-outlined text-primary" aria-hidden="true">account_balance</span>
-                    <p className="font-semibold">{edu.institution}</p>
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em]">Key Highlights</p>
-                    <ul className="text-sm text-on-surface-variant space-y-2 list-none">
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary">•</span>
-                        <span>{edu.description}</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary">•</span>
-                        <span>Specialization in software development and engineering principles.</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

@@ -136,49 +136,73 @@ const Contact = () => {
 
   const contactCards = [
     {
-      icon: "mail",
+      type: "mail",
       label: "EMAIL",
       value: portfolioData.personalInfo.email,
       href: `mailto:${portfolioData.personalInfo.email}`
     },
     {
-      icon: "location_on",
+      type: "location",
       label: "LOCATION",
       value: portfolioData.personalInfo.location,
       href: null
     },
     {
-      icon: "code",
+      type: "github",
       label: "GITHUB",
       value: "jayswalhimanshu74-cmd",
       href: "https://github.com/jayswalhimanshu74-cmd"
     },
     {
-      icon: "public",
+      type: "linkedin",
       label: "LINKEDIN",
-      value: "himanshujayswal",
+      value: "himanshu-jayswal-dev",
       href: "https://www.linkedin.com/in/himanshu-jayswal-dev/"
     }
   ];
 
+  const renderCardIcon = (type) => {
+    if (type === "mail") {
+      return <span className="material-symbols-outlined text-primary-container text-[18px]" aria-hidden="true">mail</span>;
+    }
+    if (type === "location") {
+      return <span className="material-symbols-outlined text-primary-container text-[18px]" aria-hidden="true">location_on</span>;
+    }
+    if (type === "github") {
+      return (
+        <svg className="w-4.5 h-4.5 fill-current text-primary-container" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      );
+    }
+    if (type === "linkedin") {
+      return (
+        <svg className="w-4 h-4 fill-current text-primary-container" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        </svg>
+      );
+    }
+    return null;
+  };
+
   return (
-    <section className="relative w-full bg-surface-container-lowest py-section-gap px-gutter overflow-hidden" id="contact">
+    <section className="relative w-full bg-surface-container-lowest py-section-gap px-gutter overflow-hidden scroll-mt-24" id="contact">
 
       {/* Atmospheric background gradient */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-primary/3 rounded-full blur-[180px] pointer-events-none" />
 
-      <div className="max-w-container-max mx-auto w-full relative z-10 flex flex-col gap-16">
+      <div className="max-w-container-max mx-auto w-full relative z-10 flex flex-col gap-14">
 
         {/* Header */}
         <div className="flex flex-col gap-5 md:w-3/4 max-w-3xl">
           <div className="flex items-center gap-3">
             <div className="h-[1px] w-10 bg-primary" />
-            <span className="font-label-caps text-[11px] tracking-[0.2em] text-primary uppercase font-bold">
+            <span className="font-label-caps text-xs tracking-[0.14em] text-primary uppercase font-semibold">
               LET'S CONNECT
             </span>
           </div>
-          <h2 className="font-display-lg text-3xl sm:text-4xl lg:text-5xl xl:text-[56px] text-on-surface uppercase tracking-tight">
-            CONTACT.
+          <h2 className="font-display-lg text-3xl sm:text-4xl lg:text-5xl xl:text-[56px] text-on-surface uppercase tracking-tight font-bold">
+            CONTACT
           </h2>
           <p className="font-body-lg text-base lg:text-[17px] text-on-surface-variant max-w-2xl leading-relaxed">
             Ready to build something exceptional? Whether it's a collaboration, an opportunity, or just a conversation — my inbox is always open.
@@ -186,7 +210,7 @@ const Contact = () => {
         </div>
 
         {/* Contact Cards + Form Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
 
           {/* Left: Contact Info Cards */}
           <motion.div
@@ -202,44 +226,61 @@ const Contact = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="group flex items-center gap-4 p-4 bg-surface-container border border-surface-variant rounded-lg hover:border-primary-container/30 transition-colors duration-300"
               >
-                <div className="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center group-hover:bg-primary-container/10 transition-colors">
-                  <span className="material-symbols-outlined text-primary-container text-[18px]" aria-hidden="true">{card.icon}</span>
-                </div>
-                <div className="flex flex-col gap-0.5">
-                  <span className="font-label-caps text-[9.5px] text-on-surface-variant tracking-[0.2em] uppercase">{card.label}</span>
-                  {card.href ? (
-                    <a href={card.href} className="font-body-md text-xs sm:text-sm text-on-surface hover:text-primary-container transition-colors" target={card.href.startsWith('mailto:') ? undefined : "_blank"} rel={card.href.startsWith('mailto:') ? undefined : "noopener noreferrer"}>
-                      {card.value}
-                    </a>
-                  ) : (
-                    <span className="font-body-md text-xs sm:text-sm text-on-surface">{card.value}</span>
-                  )}
-                </div>
+                {card.href ? (
+                  <a
+                    href={card.href}
+                    target={card.href.startsWith('mailto:') ? undefined : "_blank"}
+                    rel={card.href.startsWith('mailto:') ? undefined : "noopener noreferrer"}
+                    className="group flex items-center justify-between p-4 bg-surface-container border border-surface-variant rounded-xl hover:border-primary-container/45 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary-container"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center group-hover:bg-primary-container/10 transition-colors">
+                        {renderCardIcon(card.type)}
+                      </div>
+                      <div className="flex flex-col gap-0.5">
+                        <span className="font-label-caps text-xs text-on-surface-variant tracking-[0.14em] uppercase font-semibold">{card.label}</span>
+                        <span className="font-body-md text-sm text-on-surface group-hover:text-primary-container transition-colors">{card.value}</span>
+                      </div>
+                    </div>
+                    <span className="material-symbols-outlined text-primary-container text-[16px] opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" aria-hidden="true">
+                      arrow_forward
+                    </span>
+                  </a>
+                ) : (
+                  <div className="flex items-center gap-4 p-4 bg-surface-container border border-surface-variant rounded-xl">
+                    <div className="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+                      {renderCardIcon(card.type)}
+                    </div>
+                    <div className="flex flex-col gap-0.5">
+                      <span className="font-label-caps text-xs text-on-surface-variant tracking-[0.14em] uppercase font-semibold">{card.label}</span>
+                      <span className="font-body-md text-sm text-on-surface">{card.value}</span>
+                    </div>
+                  </div>
+                )}
               </motion.div>
             ))}
 
-            {/* CTA Block (Fixed heading skip h4 -> h3) */}
-            <div className="mt-4 p-6 bg-surface-container border border-surface-variant rounded-xl relative overflow-hidden">
+            {/* CTA Block */}
+            <div className="mt-2 p-6 bg-surface-container border border-surface-variant rounded-xl relative overflow-hidden group hover:border-primary-container/45 transition-colors duration-300">
               <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #d6b77a 1px, transparent 0)', backgroundSize: '20px 20px' }} />
               <div className="relative z-10 flex flex-col gap-3">
-                <span className="font-technical text-[10.5px] text-primary-container tracking-wider font-bold">OPEN FOR</span>
-                <h3 className="font-headline-md text-base text-on-surface font-bold uppercase">Full-Time Opportunities</h3>
-                <p className="font-body-md text-[13.5px] text-on-surface-variant leading-relaxed">
+                <span className="font-technical text-xs text-primary-container tracking-[0.14em] font-bold">OPEN FOR</span>
+                <h3 className="font-headline-md text-lg text-on-surface font-bold uppercase">Full-Time Opportunities</h3>
+                <p className="font-body-md text-sm text-on-surface-variant leading-relaxed max-w-[60ch]">
                   Actively seeking roles in Java Full Stack Development, Backend Engineering, or Software Architecture positions where I can contribute to meaningful, high-impact systems.
                 </p>
               </div>
             </div>
           </motion.div>
 
-          {/* Right: Contact Form */}
+          {/* Right: Contact Form - Sticky on desktop */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="col-span-1 lg:col-span-7 bg-surface-container border border-surface-variant rounded-xl p-6 md:p-8"
+            className="col-span-1 lg:col-span-7 bg-surface-container border border-surface-variant rounded-xl p-6 md:p-8 lg:sticky lg:top-28 lg:self-start"
           >
             <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
 
@@ -258,7 +299,7 @@ const Contact = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Full Name */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-name" className="font-label-caps text-[10px] text-on-surface-variant tracking-[0.2em] uppercase">
+                  <label htmlFor="contact-name" className="font-label-caps text-xs text-on-surface-variant tracking-[0.14em] uppercase font-semibold">
                     FULL NAME
                   </label>
                   <input
@@ -272,8 +313,8 @@ const Contact = () => {
                     onChange={handleChange}
                     aria-invalid={errors.name ? 'true' : 'false'}
                     aria-describedby={errors.name ? 'contact-name-error' : undefined}
-                    placeholder="Himanshu Jayswal"
-                    className={`w-full px-4 py-3 bg-surface-container-high border rounded-sm text-on-surface font-body-md text-sm placeholder:text-outline outline-none transition-colors ${
+                    placeholder="Your name"
+                    className={`w-full px-4 py-3 bg-surface-container-high border rounded-lg text-on-surface font-body-md text-base placeholder:text-outline outline-none transition-colors ${
                       errors.name ? 'border-red-500 focus:border-red-400' : 'border-surface-variant focus:border-primary-container'
                     }`}
                   />
@@ -286,7 +327,7 @@ const Contact = () => {
 
                 {/* Email Address */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-email" className="font-label-caps text-[10px] text-on-surface-variant tracking-[0.2em] uppercase">
+                  <label htmlFor="contact-email" className="font-label-caps text-xs text-on-surface-variant tracking-[0.14em] uppercase font-semibold">
                     EMAIL
                   </label>
                   <input
@@ -300,8 +341,8 @@ const Contact = () => {
                     onChange={handleChange}
                     aria-invalid={errors.email ? 'true' : 'false'}
                     aria-describedby={errors.email ? 'contact-email-error' : undefined}
-                    placeholder="jayswalhimanshu74@gmail.com"
-                    className={`w-full px-4 py-3 bg-surface-container-high border rounded-sm text-on-surface font-body-md text-sm placeholder:text-outline outline-none transition-colors ${
+                    placeholder="you@example.com"
+                    className={`w-full px-4 py-3 bg-surface-container-high border rounded-lg text-on-surface font-body-md text-base placeholder:text-outline outline-none transition-colors ${
                       errors.email ? 'border-red-500 focus:border-red-400' : 'border-surface-variant focus:border-primary-container'
                     }`}
                   />
@@ -315,7 +356,7 @@ const Contact = () => {
 
               {/* Subject */}
               <div className="flex flex-col gap-2">
-                <label htmlFor="contact-subject" className="font-label-caps text-[10px] text-on-surface-variant tracking-[0.2em] uppercase">
+                <label htmlFor="contact-subject" className="font-label-caps text-xs text-on-surface-variant tracking-[0.14em] uppercase font-semibold">
                   SUBJECT
                 </label>
                 <input
@@ -328,8 +369,8 @@ const Contact = () => {
                   onChange={handleChange}
                   aria-invalid={errors.subject ? 'true' : 'false'}
                   aria-describedby={errors.subject ? 'contact-subject-error' : undefined}
-                  placeholder="Project Discussion"
-                  className={`w-full px-4 py-3 bg-surface-container-high border rounded-sm text-on-surface font-body-md text-sm placeholder:text-outline outline-none transition-colors ${
+                  placeholder="Project Inquiry"
+                  className={`w-full px-4 py-3 bg-surface-container-high border rounded-lg text-on-surface font-body-md text-base placeholder:text-outline outline-none transition-colors ${
                     errors.subject ? 'border-red-500 focus:border-red-400' : 'border-surface-variant focus:border-primary-container'
                   }`}
                 />
@@ -342,7 +383,7 @@ const Contact = () => {
 
               {/* Message */}
               <div className="flex flex-col gap-2">
-                <label htmlFor="contact-message" className="font-label-caps text-[10px] text-on-surface-variant tracking-[0.2em] uppercase">
+                <label htmlFor="contact-message" className="font-label-caps text-xs text-on-surface-variant tracking-[0.14em] uppercase font-semibold">
                   MESSAGE
                 </label>
                 <textarea
@@ -356,7 +397,7 @@ const Contact = () => {
                   aria-invalid={errors.message ? 'true' : 'false'}
                   aria-describedby={errors.message ? 'contact-message-error' : undefined}
                   placeholder="Tell me about your project or opportunity..."
-                  className={`w-full px-4 py-3 bg-surface-container-high border rounded-sm text-on-surface font-body-md text-sm placeholder:text-outline resize-none outline-none transition-colors ${
+                  className={`w-full px-4 py-3 bg-surface-container-high border rounded-lg text-on-surface font-body-md text-base placeholder:text-outline resize-none outline-none transition-colors ${
                     errors.message ? 'border-red-500 focus:border-red-400' : 'border-surface-variant focus:border-primary-container'
                   }`}
                 />
@@ -403,7 +444,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={status === 'sending' || !web3formsKey}
-                className="w-full py-3.5 bg-primary-container text-surface-container-lowest font-label-caps text-[11px] tracking-[0.15em] uppercase rounded-sm flex justify-center items-center gap-2.5 font-bold hover:opacity-90 transition-all disabled:opacity-50 cursor-pointer group relative overflow-hidden"
+                className="w-full py-3.5 bg-primary-container text-surface-container-lowest font-label-caps text-sm tracking-[0.14em] uppercase rounded-sm flex justify-center items-center gap-2.5 font-bold hover:opacity-90 transition-all disabled:opacity-50 cursor-pointer group relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                 <span className="relative z-10">
