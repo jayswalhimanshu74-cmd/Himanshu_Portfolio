@@ -1,114 +1,120 @@
 import { motion } from 'framer-motion';
-import { Typewriter } from 'react-simple-typewriter';
 import { portfolioData } from '../../data/portfolioData';
+import ShaderBackground from './ShaderBackground';
+import ThreeDObject from './ThreeDObject';
 
 const Hero = () => {
   const { personalInfo } = portfolioData;
 
   return (
-    <section className="relative min-h-screen flex items-center pt-24 overflow-hidden px-gutter" id="home">
-      {/* Background Blurs */}
-      <div className="hero-blob absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full"></div>
-      <div className="hero-blob absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-secondary/10 rounded-full"></div>
-      
-      <div className="max-w-container-max mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-8"
-        >
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl lg:text-[64px] font-extrabold leading-[1.1] text-on-surface tracking-tight">
-              {personalInfo.name.split(' ')[0]} <span className="text-primary">{personalInfo.name.split(' ')[1]}</span>
-            </h1>
-            <div className="h-8 overflow-hidden">
-              <p className="text-xl md:text-2xl font-semibold text-secondary">
-                <Typewriter
-                  words={personalInfo.roles}
-                  loop={0}
-                  cursor
-                  cursorStyle="_"
-                  typeSpeed={70}
-                  deleteSpeed={50}
-                  delaySpeed={2000}
-                />
-              </p>
+    <section 
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background pt-20 px-gutter" 
+      id="home"
+    >
+      {/* WebGL Ambient Background Layer */}
+      <ShaderBackground />
+
+      {/* Atmospheric Gradients overlay */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-surface-container-lowest/90 via-surface-container-lowest/50 to-transparent pointer-events-none" />
+      <div className="absolute -top-[30%] -right-[10%] w-[800px] h-[800px] rounded-full bg-primary-container/5 blur-[120px] pointer-events-none mix-blend-plus-lighter" />
+
+      {/* Main Content Area */}
+      <div className="relative z-10 w-full max-w-container-max mx-auto flex-1 flex flex-col justify-center py-10 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center w-full">
+          
+          {/* Left Content: Typographic Hero */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="col-span-1 lg:col-span-7 flex flex-col gap-6 text-left"
+          >
+            {/* Label Marker */}
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-[1px] bg-primary-container" />
+              <span className="font-label-caps text-[11px] tracking-[0.25em] text-primary-container uppercase">
+                JAVA FULL STACK DEVELOPER & IT ENGINEER
+              </span>
             </div>
-            <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-              {personalInfo.intro}
+
+            {/* Headline */}
+            <div className="flex flex-col gap-2 relative">
+              {/* Subtle technical watermark behind text */}
+              <span aria-hidden="true" className="absolute -left-6 -top-6 font-technical text-[100px] leading-none text-surface-container-highest/10 font-bold select-none pointer-events-none -z-10">
+                01
+              </span>
+              <h1 className="font-display-lg text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] 2xl:text-[68px] text-on-surface tracking-tighter uppercase leading-[1.06]">
+                ENGINEERING SOFTWARE THAT <br />
+                <span className="text-primary-container relative inline-block">
+                  MATTERS.
+                  <span className="absolute -bottom-1.5 left-0 w-full h-[2px] bg-primary-container/30" />
+                  <span className="absolute -bottom-1.5 left-0 w-1/3 h-[2px] bg-primary-container animate-[scanline_3s_ease-in-out_infinite_alternate]" />
+                </span>
+              </h1>
+            </div>
+
+            {/* Subtext */}
+            <p className="font-body-lg text-base lg:text-[17px] text-on-surface-variant max-w-2xl mt-2 leading-relaxed">
+              I'm {personalInfo.name} — an IT engineering student and Java Full Stack Developer focused on Spring Boot, React, and building robust developer tools. I design systems where silence speaks louder than noise.
             </p>
-          </div>
 
-          <div className="flex flex-wrap gap-4">
-            <button className="bg-primary text-on-primary px-8 py-4 rounded-xl font-semibold glow-blue flex items-center gap-2 hover:opacity-90 transition-all">
-              View Projects <span className="material-symbols-outlined">arrow_forward</span>
-            </button>
-            <button className="glass-card text-primary border border-primary/20 px-8 py-4 rounded-xl font-semibold hover:bg-primary/10 transition-all">
-              Contact Me
-            </button>
-          </div>
-
-          <div className="flex gap-6 text-on-surface-variant">
-            {personalInfo.socials.slice(0, 3).map((social, index) => (
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-5 mt-6">
               <a 
-                key={index} 
-                href={social.url} 
-                className="material-symbols-outlined cursor-pointer hover:text-primary transition-colors text-2xl"
-                title={social.name}
+                href="#projects" 
+                className="group relative px-6 py-3.5 bg-primary-container text-surface-container-lowest font-label-caps text-[11px] tracking-[0.14em] uppercase rounded-sm flex items-center gap-2.5 overflow-hidden transition-transform hover:scale-[1.02] shadow-md font-bold"
               >
-                {social.name === 'GitHub' ? 'terminal' : social.name === 'LinkedIn' ? 'public' : 'code'}
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                <span className="relative z-10">Explore Projects</span>
+                <span className="material-symbols-outlined relative z-10 text-[16px] group-hover:translate-x-1 transition-transform">
+                  arrow_forward
+                </span>
               </a>
-            ))}
-          </div>
-        </motion.div>
+              <a 
+                href="#contact" 
+                className="group px-6 py-3.5 text-on-surface-variant hover:text-on-surface font-label-caps text-[11px] tracking-[0.14em] uppercase flex items-center gap-2.5 transition-colors font-semibold"
+              >
+                <span>Get In Touch</span>
+                <span className="material-symbols-outlined text-[16px] opacity-50 group-hover:opacity-100 transition-opacity">
+                  mail
+                </span>
+              </a>
+            </div>
+          </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="relative flex justify-center lg:justify-end"
-        >
-          <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full glass-card flex items-center justify-center p-8 border-2 border-primary/30 glow-blue">
-            <div className="w-full h-full rounded-full overflow-hidden bg-surface-container">
-              <img 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe9B6FFxyFc2cTTDSBktL7BJxlj-tdS6LNVxqNzI3bX4o33G-Rb1ZWlTRsNqp13ONoqWOhp-cKNrbghVFxddgKNe7_g2eg1KLBn1cLzYMDmg-06QLSq43jQ-3Hhl0YwWCWNHJgEOqwVd5d9hc514M_jIOm_pMDL35GOIG009nwOXSmEfeP3j3pK_1UO4kmW3jkwbw7mawoImOf3OPyH5Zl0URzzJP6se6c8skMOfEhrA6ZUH0T0_YyNHJZVB7UXZojtUBEc57GBGI" 
-                alt={personalInfo.name}
-              />
+          {/* Right Content: 3D Visual Mesh */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, delay: 0.8 }}
+            className="col-span-1 lg:col-span-5 h-[360px] lg:h-[460px] xl:h-[520px] relative hidden lg:block"
+          >
+            <div className="absolute inset-0 z-10">
+              <ThreeDObject />
             </div>
             
-            {/* Floating Icons */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="absolute -top-4 left-1/2 -translate-x-1/2 glass-card p-3 rounded-xl glow-blue"
-            >
-              <span className="material-symbols-outlined text-primary">javascript</span>
-            </motion.div>
-            <motion.div 
-              animate={{ x: [0, 10, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute top-1/4 -right-8 glass-card p-3 rounded-xl glow-purple"
-            >
-              <span className="material-symbols-outlined text-secondary">android</span>
-            </motion.div>
-            <motion.div 
-              animate={{ x: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity }}
-              className="absolute bottom-1/4 -left-8 glass-card p-3 rounded-xl glow-blue"
-            >
-              <span className="material-symbols-outlined text-primary">database</span>
-            </motion.div>
-            <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-              className="absolute -bottom-4 left-1/2 -translate-x-1/2 glass-card p-3 rounded-xl glow-purple"
-            >
-              <span className="material-symbols-outlined text-secondary">cloud</span>
-            </motion.div>
-          </div>
-        </motion.div>
+            {/* Decorator HUD Elements */}
+            <div className="absolute right-0 top-1/4 flex flex-col items-end gap-1 font-technical text-[10px] text-outline-variant z-20 pointer-events-none select-none">
+              <span>SYS.ARCH.v2.4</span>
+              <span>COORDS: 22.30°N 70.80°E</span>
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse" /> 
+                ACTIVE NODE
+              </span>
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 select-none z-10">
+        <span className="font-label-caps text-[10px] text-on-surface-variant/40 tracking-[0.25em] uppercase [writing-mode:vertical-rl] rotate-180">
+          SCROLL
+        </span>
+        <div className="w-[1px] h-12 bg-outline-variant/20 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1/2 bg-primary-container/60 animate-[scroll-indicator_2s_ease-in-out_infinite]" />
+        </div>
       </div>
     </section>
   );

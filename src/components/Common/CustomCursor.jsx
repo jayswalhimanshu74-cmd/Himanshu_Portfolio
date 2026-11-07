@@ -38,7 +38,7 @@ const CustomCursor = () => {
           x: mousePosition.x - 16,
           y: mousePosition.y - 16,
           scale: isHovering ? 2.5 : 1,
-          backgroundColor: isHovering ? 'rgba(99, 102, 241, 0.1)' : 'transparent',
+          backgroundColor: isHovering ? 'rgba(214, 183, 122, 0.1)' : 'transparent',
           borderWidth: isHovering ? '1px' : '2px',
         }}
         transition={{ type: 'spring', damping: 20, stiffness: 250, mass: 0.5 }}

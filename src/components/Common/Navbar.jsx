@@ -1,72 +1,80 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Navbar = ({ isDarkMode, toggleDarkMode }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+const Navbar = () => {
+  const [activeSection, setActiveSection] = useState('projects');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { name: 'PROJECTS', href: '#projects', path: 'projects' },
+    { name: 'STACK', href: '#skills', path: 'stack' },
+    { name: 'ENGINEERING', href: '#experience', path: 'engineering' },
+    { name: 'ABOUT', href: '#about', path: 'about' },
+    { name: 'CONTACT', href: '#contact', path: 'contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const scrollPos = window.scrollY + 120;
+      for (const link of navLinks) {
+        const element = document.querySelector(link.href);
+        if (element) {
+          const top = element.offsetTop;
+          const height = element.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            setActiveSection(link.path);
+          }
+        }
+      }
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
   return (
-    <header 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ease-in-out border-b ${
-        isScrolled 
-          ? 'bg-surface/70 backdrop-blur-xl border-outline/10 py-3 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]' 
-          : 'bg-transparent border-transparent py-5'
-      }`}
-    >
-      <div className="flex justify-between items-center px-gutter max-w-container-max mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="text-2xl font-bold text-primary"
-        >
-          HJ
-        </motion.div>
+    <header className="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-[12px] border-b border-outline-variant/10">
+      <div className="h-16 md:h-18 max-w-container-max mx-auto px-gutter flex items-center justify-between">
+        
+        {/* Logo Section */}
+        <div className="flex items-center gap-3">
+          <img 
+            alt="Himanshu Jayswal Logo" 
+            className="h-7 w-auto object-contain" 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOXtsNgDNK_eOzbDLQkcJbMNm--PXoa2Y1AfxJlkyg6WY3wdBRFX96T5Bjwn5oVmwNgTveIio_3RRz2rp_XC68Z6h9W8nstTGbtXnerEhhEHtVWWrNP2uAnhuGipqft50zCLU9l_eVc8y2cC1LiPS7Vxv95s8IgB24LiIHEepp4B8nEVDtv_6VDEEVdOdryDfT1zVNjBEHKDqyRyWZRUnUYNKfCpYbqUHfovTLSBNFQ_bmLB1jg0coAQ"
+          />
+          <span className="font-headline-md text-xl text-on-surface tracking-tight uppercase font-bold">ENGINEER</span>
+        </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7 lg:gap-10">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors relative group"
+              className={`font-label-caps text-[11px] tracking-[0.2em] transition-all duration-300 ${
+                activeSection === link.path
+                  ? 'text-primary font-bold underline underline-offset-8 decoration-2'
+                  : 'text-on-surface-variant hover:text-primary'
+              }`}
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
-          <button 
-            onClick={toggleDarkMode}
-            className="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform p-2 rounded-full hover:bg-primary/10"
+        {/* Action Button / Profile */}
+        <div className="flex items-center gap-5">
+          <a
+            href="#contact"
+            className="w-7 h-7 rounded-full bg-primary flex items-center justify-center hover:scale-105 transition-transform"
           >
-            {isDarkMode ? 'light_mode' : 'dark_mode'}
-          </button>
-          <button className="hidden sm:block bg-primary text-on-primary px-6 py-2 rounded-full text-sm font-semibold glow-blue hover:opacity-90 transition-all">
-            Resume
-          </button>
+            <span className="material-symbols-outlined text-on-primary text-[16px]">person</span>
+          </a>
           
           {/* Mobile Menu Toggle */}
           <button 
-            className="md:hidden material-symbols-outlined text-on-surface"
+            className="md:hidden material-symbols-outlined text-on-surface text-[24px] cursor-pointer"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? 'close' : 'menu'}
@@ -81,21 +89,20 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden absolute top-full left-0 w-full bg-surface-container/95 backdrop-blur-xl border-b border-white/10 p-6 flex flex-col gap-4 shadow-2xl"
+            className="md:hidden absolute top-20 left-0 w-full bg-surface-container-lowest/95 backdrop-blur-xl border-b border-outline-variant/10 p-6 flex flex-col gap-6"
           >
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg font-medium text-on-surface-variant hover:text-primary"
+                className={`font-label-caps text-[12px] tracking-[0.2em] transition-colors py-2 ${
+                  activeSection === link.path ? 'text-primary font-bold' : 'text-on-surface-variant'
+                }`}
               >
                 {link.name}
               </a>
             ))}
-            <button className="w-full bg-primary text-on-primary py-3 rounded-xl font-semibold mt-2">
-              Resume
-            </button>
           </motion.div>
         )}
       </AnimatePresence>

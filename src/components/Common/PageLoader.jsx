@@ -6,39 +6,33 @@ const PageLoader = () => {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
-      className="fixed inset-0 z-[10000] bg-surface flex flex-col items-center justify-center"
+      className="fixed inset-0 z-[10000] bg-surface-container-lowest flex flex-col items-center justify-center"
     >
-      <div className="relative">
+      <div className="relative flex flex-col items-center gap-8">
         <motion.div
-          animate={{
-            rotate: [0, 360],
-            borderRadius: ["20%", "50%", "20%"],
-          }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          className="w-24 h-24 bg-gradient-to-tr from-primary to-secondary opacity-20 blur-xl"
-        />
-        <motion.div
-          initial={{ scale: 0.5, opacity: 0 }}
+          initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="absolute inset-0 flex items-center justify-center"
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center gap-2"
         >
-          <span className="text-3xl font-bold text-primary">HJ</span>
+          <span className="font-display-lg text-3xl text-on-surface tracking-tight uppercase font-bold">
+            Himanshu Jayswal
+          </span>
+          <span className="font-technical text-[10px] text-outline tracking-[0.25em] uppercase">
+            INITIALIZING EXPERIENCE
+          </span>
         </motion.div>
+
+        {/* Loading bar */}
+        <div className="w-48 h-[1px] bg-surface-variant rounded-full overflow-hidden">
+          <motion.div
+            initial={{ x: "-100%" }}
+            animate={{ x: "100%" }}
+            transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+            className="h-full w-1/2 bg-primary-container"
+          />
+        </div>
       </div>
-      <motion.div
-        initial={{ width: 0 }}
-        animate={{ width: "200px" }}
-        transition={{ duration: 1.5, ease: "easeInOut" }}
-        className="h-1 bg-gradient-to-r from-primary to-secondary mt-8 rounded-full overflow-hidden"
-      >
-        <motion.div 
-          animate={{ x: ["-100%", "100%"] }}
-          transition={{ duration: 1, repeat: Infinity }}
-          className="h-full w-1/2 bg-white/20"
-        />
-      </motion.div>
-      <p className="text-on-surface-variant text-[10px] font-bold uppercase tracking-[0.3em] mt-4">Initializing Experience</p>
     </motion.div>
   );
 };

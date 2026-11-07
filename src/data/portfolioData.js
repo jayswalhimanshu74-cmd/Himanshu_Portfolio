@@ -27,7 +27,7 @@ export const portfolioData = {
     resumeUrl: "#", // Placeholder
     socials: [
       { name: "GitHub", icon: GitHub, url: "https://github.com/jayswalhimanshu74-cmd" },
-      { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/in/himanshujayswal" },
+      { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/in/himanshu-jayswal-dev" },
       { name: "Instagram", icon: Instagram, url: "https://instagram.com/himanshujayswal" },
       { name: "Email", icon: Mail, url: "mailto:jayswalhimanshu74@gmail.com" },
       { name: "LeetCode", icon: Code2, url: "https://leetcode.com/himanshujayswal" }
@@ -65,7 +65,7 @@ export const portfolioData = {
         { name: "MongoDB", level: 80, icon: Database }
       ]
     },
-  
+
     {
       category: "Tools",
       items: [
@@ -112,6 +112,24 @@ export const portfolioData = {
   projects: [
     {
       id: 1,
+      title: "DocuMind AI",
+      description: "Intelligent document processing and conversational agent utilizing Retrieval-Augmented Generation (RAG) to extract, analyze, and interact with complex unstructured data.",
+      tech: ["Python", "FastAPI", "PostgreSQL", "Gemini", "ChromaDB"],
+      features: [
+        "RAG pipeline integration",
+        "Document parsing and vector search",
+        "Conversational AI agent",
+        "High-performance FastAPI backend"
+      ],
+      links: {
+        live: null,
+        github: "https://github.com/jayswalhimanshu74-cmd/DocuMind-Ai",
+        details: "#"
+      },
+      image: "src/assets/projectImages/documind.png"
+    },
+    {
+      id: 2,
       title: "JobVista",
       description: "A complete job and internship portal with role-based authentication and dashboards.",
       tech: ["React", "Spring Boot", "MySQL", "JWT", "Docker"],
@@ -124,14 +142,48 @@ export const portfolioData = {
         "Responsive UI"
       ],
       links: {
-        live: "#",
-        github: "#",
+        live: "https://jobvista-git-main-jayswalhimanshu74-4107s-projects.vercel.app/",
+        github: "https://github.com/jayswalhimanshu74-cmd/JobVista",
         details: "#"
       },
-      image: "src/assets/Screenshot (1).png"
+      image: "src/assets/projectImages/jobvista.png"
     },
-    
-   
+    {
+      id: 3,
+      title: "LogiTrack",
+      description: "A robust, scalable inventory and logistics management platform engineered for real-time tracking, complex data aggregation, and high-throughput transaction processing.",
+      tech: ["Java", "Spring Boot", "React", "PostgreSQL"],
+      features: [
+        "Real-time inventory tracking",
+        "Logistics flow management",
+        "High-throughput transaction processing",
+        "Data aggregation dashboards"
+      ],
+      links: {
+        live: "https://logi-track-phi.vercel.app/",
+        github: "https://github.com/jayswalhimanshu74-cmd/LogiTrack",
+        details: "#"
+      },
+      image: "src/assets/projectImages/Logitrack.png"
+    },
+    {
+      id: 4,
+      title: "Hence-Code / Code-Editor",
+      description: "Cloud-native collaborative development environment leveraging WebSockets and Redis pub/sub for sub-millisecond latency synchronized editing and distributed state management.",
+      tech: ["Java", "WebSockets", "Redis", "Docker"],
+      features: [
+        "Real-time synchronized editing",
+        "Distributed state management with Redis",
+        "Sub-millisecond latency WebSockets",
+        "Dockerized sandbox environment"
+      ],
+      links: {
+        live: "https://code-editor-git-main-jayswalhimanshu74-4107s-projects.vercel.app/",
+        github: "https://github.com/jayswalhimanshu74-cmd/Code-Editor",
+        details: "#"
+      },
+      image: "src/assets/projectImages/hence-code.png"
+    }
   ],
   achievements: [
     { title: "Completed multiple full-stack projects", icon: Award },
