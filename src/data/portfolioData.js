@@ -20,60 +20,58 @@ export const portfolioData = {
     roles: [
       "Java Developer "
     ],
-    intro: "I am a passionate Assistant Engineer and aspiring Java Developer with experience in building full-stack applications using Java, Spring Boot, React, Android, and modern technologies. I enjoy building real-world projects, solving problems, and creating scalable applications.",
-    about: "I am an Assistant Engineer and aspiring Java Full Stack Developer passionate about building modern applications using Java, Spring Boot, React, Android, and cloud technologies. I enjoy turning ideas into practical products and continuously learning new technologies.",
-    location: "Damanager, Amreli, Gujarat ",
+    intro: "I am a passionate IT Engineering Student and aspiring Java Developer with experience in building full-stack applications using Java, Spring Boot, React, Android, and modern technologies. I enjoy building real-world projects, solving problems, and creating scalable applications.",
+    about: "I am an IT Engineering Student and aspiring Java Full Stack Developer passionate about building modern applications using Java, Spring Boot, React, Android, and cloud technologies. I enjoy turning ideas into practical products and continuously learning new technologies.",
+    location: "Bhavnager Gujarat India",
     email: "jayswalhimanshu74@gmail.com",
     resumeUrl: "/Himanshu_Jayswal_Resume.pdf",
     socials: [
       { name: "GitHub", icon: GitHub, url: "https://github.com/jayswalhimanshu74-cmd" },
       { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/in/himanshu-jayswal-dev" },
       { name: "Instagram", icon: Instagram, url: "https://instagram.com/himanshujayswal" },
-      { name: "Email", icon: Mail, url: "mailto:jayswalhimanshu74@gmail.com" },
-      { name: "LeetCode", icon: Code2, url: "https://leetcode.com/himanshujayswal" }
+      { name: "Email", icon: Mail, url: "mailto:jayswalhimanshu74@gmail.com" }
     ],
     stats: [
-      { label: "Projects Completed", value: 2, suffix: "+" },
-      { label: "Technologies Learned", value: 12, suffix: "+" },
-      { label: "Years of Learning", value: 4, suffix: "+" },
-      { label: "Current Focus", value: 100, suffix: "%" }
+      { label: "Projects Delivered", value: 4, suffix: "" },
+      { label: "Technologies in Stack", value: 24, suffix: "" }
     ]
   },
   skills: [
     {
       category: "Frontend",
       items: [
-        { name: "React", level: 90, icon: Layout },
-        { name: "HTML", level: 95, icon: Globe },
-        { name: "CSS", level: 90, icon: Globe },
-        { name: "JavaScript", level: 85, icon: Globe },
-        { name: "Tailwind CSS", level: 90, icon: Layout }
+        { name: "React", icon: Layout },
+        { name: "HTML", icon: Globe },
+        { name: "CSS", icon: Globe },
+        { name: "JavaScript", icon: Globe },
+        { name: "Tailwind CSS", icon: Layout }
       ]
     },
     {
       category: "Backend",
       items: [
-        { name: "Java", level: 95, icon: Server },
-        { name: "Spring Boot", level: 85, icon: Server },
-        { name: "REST APIs", level: 90, icon: Server }
+        { name: "Java", icon: Server },
+        { name: "Python", icon: Terminal },
+        { name: "Spring Boot", icon: Server },
+        { name: "FastAPI", icon: Server },
+        { name: "REST APIs", icon: Server }
       ]
     },
     {
       category: "Database",
       items: [
-        { name: "PostgreSQL", level: 85, icon: Database },
-        { name: "MongoDB", level: 80, icon: Database }
+        { name: "PostgreSQL", icon: Database },
+        { name: "MySQL", icon: Database }
       ]
     },
-
     {
       category: "Tools",
       items: [
-        { name: "Git", level: 90, icon: Terminal },
-        { name: "GitHub", level: 90, icon: Github },
-        { name: "Docker", level: 75, icon: Cpu },
-        { name: "Postman", level: 90, icon: Layers },
-        { name: "VS Code", level: 95, icon: Code2 }
+        { name: "Git", icon: Terminal },
+        { name: "GitHub", icon: Github },
+        { name: "Docker", icon: Cpu },
+        { name: "GitHub Actions", icon: Layers },
+        { name: "VS Code", icon: Code2 }
       ]
     }
   ],
@@ -106,30 +104,12 @@ export const portfolioData = {
       degree: "Bachelor of Engineering",
       institution: "Gujarat Technological University",
       period: "2023 - 2027",
-      description: "Completed B.E. with focus on Information Technology."
+      description: "Pursuing B.E. in Information Technology, Gujarat Technological University (expected 2027)"
     }
   ],
   projects: [
     {
       id: 1,
-      title: "DocuMind AI",
-      description: "Intelligent document processing and conversational agent utilizing Retrieval-Augmented Generation (RAG) to extract, analyze, and interact with complex unstructured data.",
-      tech: ["Python", "FastAPI", "PostgreSQL", "Gemini", "ChromaDB"],
-      features: [
-        "RAG pipeline integration",
-        "Document parsing and vector search",
-        "Conversational AI agent",
-        "High-performance FastAPI backend"
-      ],
-      links: {
-        live: null,
-        github: "https://github.com/jayswalhimanshu74-cmd/DocuMind-Ai",
-        details: "#"
-      },
-      image: "src/assets/projectImages/documind.png"
-    },
-    {
-      id: 2,
       title: "JobVista",
       description: "A complete job and internship portal with role-based authentication and dashboards.",
       tech: ["React", "Spring Boot", "MySQL", "JWT", "Docker"],
@@ -149,7 +129,7 @@ export const portfolioData = {
       image: "src/assets/projectImages/jobvista.png"
     },
     {
-      id: 3,
+      id: 2,
       title: "LogiTrack",
       description: "A robust, scalable inventory and logistics management platform engineered for real-time tracking, complex data aggregation, and high-throughput transaction processing.",
       tech: ["Java", "Spring Boot", "React", "PostgreSQL"],
@@ -167,7 +147,7 @@ export const portfolioData = {
       image: "src/assets/projectImages/Logitrack.png"
     },
     {
-      id: 4,
+      id: 3,
       title: "Hence-Code / Code-Editor",
       description: "Cloud-native collaborative development environment leveraging WebSockets and Redis pub/sub for sub-millisecond latency synchronized editing and distributed state management.",
       tech: ["Java", "WebSockets", "Redis", "Docker"],
@@ -183,6 +163,44 @@ export const portfolioData = {
         details: "#"
       },
       image: "src/assets/projectImages/hence-code.png"
+    },
+    {
+      id: 4,
+      title: "DocuMind AI",
+      description: "Intelligent document processing and conversational agent utilizing Retrieval-Augmented Generation (RAG) to extract, analyze, and interact with complex unstructured data.",
+      tech: ["Python", "FastAPI", "PostgreSQL", "Gemini", "ChromaDB"],
+      features: [
+        "RAG pipeline integration",
+        "Document parsing and vector search",
+        "Conversational AI agent",
+        "High-performance FastAPI backend"
+      ],
+      links: {
+        live: null,
+        github: "https://github.com/jayswalhimanshu74-cmd/DocuMind-Ai",
+        details: "#"
+      },
+      image: "src/assets/projectImages/documind.png"
+    },
+    {
+      id: 5,
+      title: "Certify-Chain",
+      description: "A complete car rental system with role-based authentication and dashboards.",
+      tech: ["Java", "Spring Boot", "MySQL", "JWT", "Docker"],
+      features: [
+        "JWT authentication",
+        "Admin dashboard",
+        "Company dashboard",
+        "Job seeker dashboard",
+        "Real-time communication using WebSocket",
+        "Responsive UI"
+      ],
+      links: {
+        live: "https://logi-track-phi.vercel.app/",
+        github: "https://github.com/jayswalhimanshu74-cmd/LogiTrack",
+        details: "#"
+      },
+      image: "src/assets/projectImages/Logitrack.png"
     }
   ],
   achievements: [

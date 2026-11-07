@@ -9,37 +9,37 @@
   --color-surface-container: var(--surface-container);
   --color-surface-container-high: var(--surface-container-high);
   --color-surface-container-highest: var(--surface-container-highest);
-  
+
   --color-on-surface: var(--on-surface);
   --color-on-surface-variant: var(--on-surface-variant);
   --color-inverse-surface: var(--inverse-surface);
   --color-inverse-on-surface: var(--inverse-on-surface);
-  
+
   --color-outline: var(--outline);
   --color-outline-variant: var(--outline-variant);
   --color-surface-tint: var(--surface-tint);
-  
+
   --color-primary: var(--primary);
   --color-on-primary: var(--on-primary);
   --color-primary-container: var(--primary-container);
   --color-on-primary-container: var(--on-primary-container);
   --color-inverse-primary: var(--inverse-primary);
-  
+
   --color-secondary: var(--secondary);
   --color-on-secondary: var(--on-secondary);
   --color-secondary-container: var(--secondary-container);
   --color-on-secondary-container: var(--on-secondary-container);
-  
+
   --color-tertiary: var(--tertiary);
   --color-on-tertiary: var(--on-tertiary);
   --color-tertiary-container: var(--tertiary-container);
   --color-on-tertiary-container: var(--on-tertiary-container);
-  
+
   --color-error: var(--error);
   --color-on-error: var(--on-error);
   --color-error-container: var(--error-container);
   --color-on-error-container: var(--on-error-container);
-  
+
   --color-background: var(--background);
   --color-on-background: var(--on-background);
   --color-surface-variant: var(--surface-variant);
@@ -59,6 +59,7 @@
   --radius-xl: 0.75rem;
   --radius-full: 9999px;
 
+
   --spacing-unit: 4px;
   --spacing-gutter: clamp(1.25rem, 3vw, 2.75rem);
   --spacing-margin-safe: 32px;
@@ -77,42 +78,57 @@
     --surface-container: #221f1b;
     --surface-container-high: #2d2a25;
     --surface-container-highest: #38342f;
-    
+
     --on-surface: #e8e1da;
     --on-surface-variant: #d0c5b5;
     --inverse-surface: #e8e1da;
     --inverse-on-surface: #33302b;
-    
+
     --outline: #998f81;
     --outline-variant: #4d463a;
     --surface-tint: #e2c284;
-    
+
     --primary: #f3d393;
     --on-primary: #402d00;
     --primary-container: #d6b77a;
     --on-primary-container: #5d4715;
     --inverse-primary: #735b27;
-    
+
     --secondary: #eac083;
     --on-secondary: #442b00;
     --secondary-container: #614413;
     --on-secondary-container: #dbb277;
-    
+
     --tertiary: #cad6ff;
     --on-tertiary: #232f51;
     --tertiary-container: #aebae4;
     --on-tertiary-container: #3e4a6d;
-    
+
     --error: #ffb4ab;
     --on-error: #690005;
     --error-container: #93000a;
     --on-error-container: #ffdad6;
-    
+
     --background: #15130f;
     --on-background: #e8e1da;
     --surface-variant: #38342f;
 
+    /* Card System Design Tokens */
+    --card-radius: 12px;
+    --card-radius-inner: 8px;
+    --card-bg: #1f1b16;
+    --card-border: rgba(255, 255, 255, 0.10);
+    --card-border-hover: rgba(212, 181, 122, 0.45);
+    --pad-sm: 16px;
+    --pad-md: 24px;
+    --pad-lg: 32px;
+    --grid-gap: 20px;
+
     color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -128,7 +144,8 @@
   }
 
   /* Custom input design: bottom-only 1px border */
-  input, textarea {
+  input,
+  textarea {
     background-color: #10100e !important;
     border-bottom: 1px solid #706c64 !important;
     border-top: none !important;
@@ -138,7 +155,8 @@
     transition: all 0.3s ease;
   }
 
-  input:focus, textarea:focus {
+  input:focus,
+  textarea:focus {
     border-bottom: 2px solid #d6b77a !important;
     outline: none !important;
   }
@@ -151,21 +169,51 @@
 
 /* Animations */
 @keyframes fade-in-up {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 @keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
+
 @keyframes scanline {
-  0% { left: 0%; width: 0%; }
-  50% { width: 33%; }
-  100% { left: 100%; width: 0%; }
+  0% {
+    left: 0%;
+    width: 0%;
+  }
+
+  50% {
+    width: 33%;
+  }
+
+  100% {
+    left: 100%;
+    width: 0%;
+  }
 }
+
 @keyframes scroll-indicator {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(200%); }
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(200%);
+  }
 }
 
 .animate-fade-in-up {
