@@ -104,7 +104,6 @@ export const portfolioData = {
       degree: "Bachelor of Engineering in Information Technology",
       institution: "Gujarat Technological University",
       period: "2023 - 2027",
-      cgpa: "8.37 / 10",
       cgpa: "8.34 / 10",
       description: "Pursuing B.E. in Information Technology, Gujarat Technological University (expected 2027)"
     }

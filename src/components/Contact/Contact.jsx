@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { portfolioData } from '../../data/portfolioData';
 
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -18,7 +19,7 @@ const Contact = () => {
   const subjectInputRef = useRef(null);
   const messageInputRef = useRef(null);
 
-  const web3formsKey = import.meta.env.WEB3FORMS_KEY;
+  const web3formsKey = import.meta.env.VITE_WEB3FORMS_KEY
   const fallbackEmail = portfolioData.personalInfo.email;
 
   const validate = () => {
