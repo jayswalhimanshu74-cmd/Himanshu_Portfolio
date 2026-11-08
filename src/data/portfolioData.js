@@ -18,11 +18,11 @@ export const portfolioData = {
   personalInfo: {
     name: "Himanshu Jayswal",
     roles: [
-      "Java Developer "
+      "Aspiring Java Full Stack Developer"
     ],
-    intro: "I am a passionate IT Engineering Student and aspiring Java Developer with experience in building full-stack applications using Java, Spring Boot, React, Android, and modern technologies. I enjoy building real-world projects, solving problems, and creating scalable applications.",
-    about: "I am an IT Engineering Student and aspiring Java Full Stack Developer passionate about building modern applications using Java, Spring Boot, React, Android, and cloud technologies. I enjoy turning ideas into practical products and continuously learning new technologies.",
-    location: "Bhavnager Gujarat India",
+    intro: "I am a passionate IT Engineering Student and aspiring Java Full Stack Developer with experience in building full-stack applications using Java, Spring Boot, React, and modern technologies. I enjoy building real-world projects, solving problems, and creating scalable applications.",
+    about: "I am an IT Engineering Student and aspiring Java Full Stack Developer passionate about building modern applications using Java, Spring Boot, React, and PostgreSQL. I enjoy turning ideas into practical products and continuously learning new technologies.",
+    location: "Bhavnagar, Gujarat, India",
     email: "jayswalhimanshu74@gmail.com",
     resumeUrl: "/Himanshu_Jayswal_Resume.pdf",
     socials: [
@@ -101,9 +101,11 @@ export const portfolioData = {
   ],
   education: [
     {
-      degree: "Bachelor of Engineering",
+      degree: "Bachelor of Engineering in Information Technology",
       institution: "Gujarat Technological University",
       period: "2023 - 2027",
+      cgpa: "8.37 / 10",
+      cgpa: "8.34 / 10",
       description: "Pursuing B.E. in Information Technology, Gujarat Technological University (expected 2027)"
     }
   ],
@@ -112,7 +114,7 @@ export const portfolioData = {
       id: 1,
       title: "JobVista",
       description: "A complete job and internship portal with role-based authentication and dashboards.",
-      tech: ["React", "Spring Boot", "MySQL", "JWT", "Docker"],
+      tech: ["React", "Spring Boot", "PostgreSQL", "JWT", "Docker"],
       features: [
         "JWT authentication",
         "Admin dashboard",
@@ -186,7 +188,7 @@ export const portfolioData = {
       id: 5,
       title: "Certify-Chain",
       description: "A complete car rental system with role-based authentication and dashboards.",
-      tech: ["Java", "Spring Boot", "MySQL", "JWT", "Docker"],
+      tech: ["REACT", "Python", "Django", "Ganache", "Solidity", "POSTGRESQL"],
       features: [
         "JWT authentication",
         "Admin dashboard",

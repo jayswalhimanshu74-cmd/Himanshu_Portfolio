@@ -86,7 +86,7 @@ const About = () => {
               <div className="h-px w-full bg-surface-variant" />
               <div className="flex justify-between items-center">
                 <span className="font-label-caps text-xs text-on-surface-variant tracking-[0.14em] uppercase font-semibold">ROLE</span>
-                <span className="font-headline-md text-sm text-primary-container font-semibold">IT ENGINEER</span>
+                <span className="font-headline-md text-sm text-primary-container font-semibold uppercase">ASPIRING JAVA FULL STACK</span>
               </div>
               <div className="h-px w-full bg-surface-variant" />
               <div className="flex justify-between items-center">

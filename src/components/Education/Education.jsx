@@ -45,9 +45,15 @@ const Education = () => {
         >
           {/* Left Column: Degree & Institutional Status */}
           <div className="lg:col-span-6 flex flex-col gap-4">
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <span className="px-3 py-1 bg-primary-container/15 border border-primary-container/30 text-primary-container font-technical text-xs font-semibold rounded-full uppercase tracking-wider">
                 {edu.period}
+              </span>
+              <span className="px-3 py-1 bg-surface-container-high border border-surface-variant text-primary-container font-technical text-xs font-semibold rounded-full">
+                CGPA: {edu.cgpa || '8.37 / 10'}
+              </span>
+              <span className="px-3 py-1 bg-surface-container-high border border-surface-variant text-primary-container font-technical text-xs font-semibold rounded-full">
+                CGPA: {edu.cgpa || '8.34 / 10'}
               </span>
               <span className="text-on-surface-variant font-technical text-xs">
                 Expected Graduation: 2027
