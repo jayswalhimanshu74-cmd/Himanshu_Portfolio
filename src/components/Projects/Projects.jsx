@@ -4,6 +4,7 @@ import documindImg from '../../assets/projectImages/documind.png';
 import jobvistaImg from '../../assets/projectImages/jobvista.png';
 import logitrackImg from '../../assets/projectImages/Logitrack.png';
 import henceCodeImg from '../../assets/projectImages/hence-code.png';
+import certifyImg from '../../assets/projectImages/certifychain.png';
 
 const Projects = () => {
   const projectsData = [
@@ -53,7 +54,7 @@ const Projects = () => {
       title: "CERTIFY-CHAIN",
       description: "Cloud-native collaborative development environment leveraging WebSockets and Redis pub/sub for sub-millisecond latency synchronized editing and distributed state management.",
       tech: ["REACT", "Python", "Django", "Ganache", "Solidity", "POSTGRESQL"],
-      image: "src/assets/projectImages/certifychain.png",
+      image: certifyImg,
       liveUrl: null,
       githubUrl: "https://github.com/jayswalhimanshu74-cmd/CertifyChain"
     }
